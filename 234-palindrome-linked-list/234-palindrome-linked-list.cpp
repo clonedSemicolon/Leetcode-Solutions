@@ -1,17 +1,31 @@
 class Solution {
 public:
+    
+    bool palindromicVector(vector<int>&v){
+        int s = 0;
+        int e = v.size()-1;
+        while(s<=e){
+            if (v[s]!=v[e]){
+                return false;
+            }
+            s++;
+            e--;
+        }
+        
+        return true;
+    }
+    
+    
     bool isPalindrome(ListNode* head) {
         ListNode* node = head;
-        string res = "";
+        vector<int>v;
         while(node!=NULL)
         {
-            res += to_string(node->val);
+            v.push_back(node->val);
             node = node->next;
         }
         
-        string ps = res;
-        reverse(ps.begin(),ps.end());
-        return ps == res;
+        return palindromicVector(v);
             
     }
 };
